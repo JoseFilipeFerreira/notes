@@ -60,8 +60,7 @@ m = foldr (\ x y -> f x : y) []
 
 --9b :thinking:
 m :: (a -> b) -> [a] -> [b]
-m _ [] = []
-m f (h: t) = f h : m f t
+m = map
 
 --9c
 -- m :: [a] -> [[a]]
