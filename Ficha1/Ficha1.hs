@@ -15,6 +15,8 @@ catMaybes [] = []
 catMaybes (Nothing:t) = catMaybes t
 catMaybes (Maybe h: t) = h: catMaybes t
 
+catMaybes ::  [Maybe a] -> [a]
+catMaybes = map fromJust . filter isJust
 --4
 uncurry :: (a -> b -> c) -> (a, b) -> c
 uncurry f (x, y) = f x y
