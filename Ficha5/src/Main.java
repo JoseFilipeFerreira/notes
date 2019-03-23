@@ -14,7 +14,5 @@ public class Main {
         System.out.println(ss.pop());
         System.out.println(ss.empty());
 
-
-
     }
 }
