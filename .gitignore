@@ -101,3 +101,9 @@ dkms.conf
 *.tab.c
 *.tab.h
 vms
+
+Report.*
+!Report.tex
+tests/
+db/*
+META-INF/
