@@ -65,7 +65,15 @@ myinterperse x (h:m:[]) = (h:x:m:[])
 myinterperse x (h:t)    = (h : x : (myinterperse x t))
 
 --exercicio 12
-
+mygroup:: Eq a => [a] -> [[a]]
+mygroup [] = []
+mygroup (h:t) = e : (mygroup d)
+    where
+        (e, d) = aux ([h], t)
+        aux:: Eq a => ([a], [a]) -> ([a], [a])
+        aux (l, []) = (l, [])
+        aux ((h1:t1), (h2:t2)) | h1 == h2   = aux ((h1:(h2:t1)), t2)
+                               | otherwise = ((h1:t1), (h2:t2))
 
 -- |exercicio 13
 myconcat::[[a]] -> [a]
