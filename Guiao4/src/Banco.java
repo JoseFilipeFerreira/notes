@@ -92,7 +92,6 @@ public class Banco {
         this.lockBanco.unlock();
         this.contas.get(conta).levantar(valor);
         this.contas.get(conta).unlock();
-
     }
 
     public void transferir(int contaO, int contaD, double valor) throws ContaInvalida, SaldoInsuficiente {
