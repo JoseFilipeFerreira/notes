@@ -71,8 +71,11 @@ public class Banco {
             this.lockBanco.unlock();
             throw new ContaInvalida();
         }
-        this.contas.get(conta).depositar(valor);
+        this.contas.get(conta).lock();
         this.lockBanco.unlock();
+        this.contas.get(conta).depositar(valor);
+        this.contas.get(conta).unlock();
+
     }
 
     public void levantar(int conta, double valor) throws ContaInvalida, SaldoInsuficiente{
@@ -85,8 +88,11 @@ public class Banco {
             this.lockBanco.unlock();
             throw new SaldoInsuficiente();
         }
-        this.contas.get(conta).levantar(valor);
+        this.contas.get(conta).lock();
         this.lockBanco.unlock();
+        this.contas.get(conta).levantar(valor);
+        this.contas.get(conta).unlock();
+
     }
 
     public void transferir(int contaO, int contaD, double valor) throws ContaInvalida, SaldoInsuficiente {
@@ -99,8 +105,12 @@ public class Banco {
             this.lockBanco.unlock();
             throw new SaldoInsuficiente();
         }
+        this.contas.get(contaO).lock();
+        this.contas.get(contaD).lock();
+        this.lockBanco.unlock();
         this.levantar(contaO, valor);
         this.depositar(contaD, valor);
-        this.lockBanco.unlock();
+        this.contas.get(contaO).unlock();
+        this.contas.get(contaD).unlock();
     }
 }
