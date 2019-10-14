@@ -1,5 +1,8 @@
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Conta {
     private double balanco;
+    private ReentrantLock lockConta;
 
     public Conta() {
         this.balanco = 0;
@@ -9,15 +12,24 @@ public class Conta {
         this.balanco = balanco;
     }
 
-    public synchronized void depositar(double valor){
+    public void depositar(double valor){
         this.balanco += valor;
     }
 
-    public synchronized void levantar(double valor){
+    public void levantar(double valor){
         this.balanco -= valor;
     }
 
-    public synchronized double consultar(){
+    public double consultar(){
         return this.balanco;
     }
+
+    public void lock(){
+        this.lockConta.lock();
+    }
+
+    public void unlock(){
+        this.lockConta.unlock();
+    }
+
 }
