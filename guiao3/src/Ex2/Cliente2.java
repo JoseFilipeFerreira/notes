@@ -1,9 +1,20 @@
-public class Cliente implements Runnable{
-    private Banco banco;
+package Ex2;
+
+import Exceptions.ContaInvalida;
+
+public class Cliente2 implements Runnable{
+    private Banco2 banco;
     private int valorInicial;
 
     private int[] consultar;
     private boolean fecharConta;
+
+    public Cliente2(Banco2 banco, int valorInicial, int[] consultar, boolean fecharConta) {
+        this.banco = banco;
+        this.valorInicial = valorInicial;
+        this.consultar = consultar;
+        this.fecharConta = fecharConta;
+    }
 
     public void run(){
         int conta = this.banco.criarConta(this.valorInicial);
@@ -12,15 +23,17 @@ public class Cliente implements Runnable{
             this.banco.consultarTotal(this.consultar);
         }
         if (this.fecharConta){
-            this.banco.fecharConta(conta);
+            try {
+                this.banco.fecharConta(conta);
+            } catch (ContaInvalida ignored){}
         }
     }
 
     public static void main(String [] args){
-            Banco b = new Banco();
+            Banco2 b = new Banco2();
 
-            Cliente cli1 = new Cliente(b, 0, , [0,1,2], false);
-            Cliente cli2 = new Cliente(b, 0, , [], true );
+            Cliente2 cli1 = new Cliente2(b, 0, new int[]{0, 1, 2}, false);
+            Cliente2 cli2 = new Cliente2(b, 0, new int[0], true );
 
             Thread t1 = new Thread(cli1);
             Thread t2 = new Thread(cli2);

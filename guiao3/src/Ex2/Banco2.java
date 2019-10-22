@@ -1,15 +1,17 @@
+package Ex2;
+
 import Exceptions.ContaInvalida;
 import Exceptions.SaldoInsuficiente;
 
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Banco {
-    private HashMap<Integer, Conta> contas;
+public class Banco2 {
+    private HashMap<Integer, Conta2> contas;
     private ReentrantLock lockBanco;
     int lastId;
 
-    public Banco(int size) {
+    public Banco2(int size) {
         this.lastId = 0;
         this.lockBanco = new ReentrantLock();
         this.contas = new HashMap<>();
@@ -17,7 +19,7 @@ public class Banco {
             this.criarConta(0);
         }
     }
-    public Banco() {
+    public Banco2() {
         this.lastId = 0;
         this.lockBanco = new ReentrantLock();
         this.contas = new HashMap<>();
@@ -49,7 +51,7 @@ public class Banco {
     public int criarConta(double saldoInicial){
         this.lockBanco.lock();
         int id = this.lastId++;
-        this.contas.put(id, new Conta(saldoInicial));
+        this.contas.put(id, new Conta2(saldoInicial));
         this.lockBanco.unlock();
         return id;
     }
@@ -60,7 +62,7 @@ public class Banco {
             this.lockBanco.unlock();
             throw new ContaInvalida();
         }
-        Conta c = this.contas.remove(id);
+        Conta2 c = this.contas.remove(id);
         this.lockBanco.unlock();
         return c.consultar();
     }

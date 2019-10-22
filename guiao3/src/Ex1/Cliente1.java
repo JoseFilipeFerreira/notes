@@ -1,5 +1,7 @@
-public class Cliente implements Runnable{
-        private Banco banco;
+package Ex1;
+
+public class Cliente1 implements Runnable{
+        private Banco1 banco;
         private int contaO;
         private int contaD;
         private double valor;
@@ -10,7 +12,7 @@ public class Cliente implements Runnable{
             this.banco.levantar(this.contaO, this.levantar);
         }
 
-    public Cliente(Banco banco, int contaO, int contaD, double valor, double levantar) {
+    public Cliente1(Banco1 banco, int contaO, int contaD, double valor, double levantar) {
         this.banco = banco;
         this.contaO = contaO;
         this.contaD = contaD;
@@ -19,10 +21,10 @@ public class Cliente implements Runnable{
     }
 
     public static void main(String [] args){
-            Banco b = new Banco(2);
+            Banco1 b = new Banco1(2);
 
-            Cliente cli1 = new Cliente(b, 0, 1, 1000, 0);
-            Cliente cli2 = new Cliente(b, 1, 0, 0, 1000);
+            Cliente1 cli1 = new Cliente1(b, 0, 1, 1000, 0);
+            Cliente1 cli2 = new Cliente1(b, 1, 0, 0, 1000);
 
             Thread t1 = new Thread(cli1);
             Thread t2 = new Thread(cli2);

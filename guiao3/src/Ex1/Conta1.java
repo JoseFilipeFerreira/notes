@@ -1,11 +1,13 @@
-public class Conta {
+package Ex1;
+
+public class Conta1 {
     private double balanco;
 
-    public Conta() {
+    public Conta1() {
         this.balanco = 0;
     }
 
-    public Conta(double balanco) {
+    public Conta1(double balanco) {
         this.balanco = balanco;
     }
 

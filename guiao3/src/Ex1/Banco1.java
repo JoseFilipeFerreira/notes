@@ -1,10 +1,12 @@
-public class Banco {
-    private Conta [] contas;
+package Ex1;
 
-    public Banco(int size) {
-        this.contas = new Conta[size];
+public class Banco1 {
+    private Conta1[] contas;
+
+    public Banco1(int size) {
+        this.contas = new Conta1[size];
         for(int i = 0; i < size ; i++){
-            this.contas[i] = new Conta();
+            this.contas[i] = new Conta1();
         }
     }
 

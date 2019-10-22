@@ -1,14 +1,16 @@
+package Ex2;
+
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Conta {
+public class Conta2 {
     private double balanco;
     private ReentrantLock lockConta;
 
-    public Conta() {
+    public Conta2() {
         this.balanco = 0;
     }
 
-    public Conta(double balanco) {
+    public Conta2(double balanco) {
         this.balanco = balanco;
     }
 
