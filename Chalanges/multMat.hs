@@ -1,6 +1,5 @@
 transpose :: [[a]] -> [[a]]
-transpose ([]:_) = []
-transpose l = (map head l) : transpose (map tail l)
+transpose = foldr (zipWith (:)) (repeat [])
 
 multSumVec :: Num a => [a] -> [a] -> a
 multSumVec = (sum .) . zipWith (*)
