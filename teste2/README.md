@@ -6,7 +6,7 @@
 * [Quasi-Newton](#Quasi-Newton)
     * [Sem derivadas](#Sem-derivadas)
     * [Com derivadas](#Com-derivadas)
-* [Metodo de Nelder-Head](#Metodo-de-Nelder-Head)
+* [Método de Nelder-Head](#Método-de-Nelder-Head)
 
 - - - -
 
