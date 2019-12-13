@@ -19,7 +19,7 @@ format short %  5 casas decimais
 
 - - - -
 
-# Minimos Quadrados
+# Mínimos Quadrados
 ## Polinómios Ortogonais
 ```matlab
 x = [1.5 2 3 4]
@@ -48,7 +48,7 @@ resnorm
 - - - -
 
 # Quasi-Newton
-> Se for para saber o max (este metodo so calcula min) portanto `max = -min(-f(x))`
+> Se for para saber o max (este método so calcula min) portanto `max = -min(-f(x))`
 
 ## Sem derivadas
 ```matlab
@@ -86,7 +86,7 @@ op = optimset('gradobj','on')
 
 - - - -
 
-# Metodo de Nelder-Head
+# Método de Nelder-Head
 ```matlab
 foo = @(x) max(abs(x(1)),abs(x(2)-1))
 
