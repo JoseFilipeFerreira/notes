@@ -1,6 +1,6 @@
 # Índice
 * [Utilitários](#Utilitários)
-* [Minimos Quadrados](#Minimos-Quadrados)
+* [Mínimos Quadrados](#Mínimos-Quadrados)
     * [Polinómios Ortogonais](#Polinómios-Ortogonais)
     * [Modelo não polinomial linear](#Modelo-não-polinomial-linear)
 * [Quasi-Newton](#Quasi-Newton)
