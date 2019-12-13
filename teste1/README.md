@@ -149,8 +149,3 @@ NOTA:
 ```matlab
 trapz(points_X, points_Y)
 ```
-
-- - - -
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
