@@ -14,7 +14,6 @@ public class Client {
 
         String r;
         while (((r = inUser.readLine()) != null) && ! r.equals("quit")){
-            r = inUser.readLine();
             out.println(r);
             out.flush();
             System.out.println(in.readLine());
@@ -25,3 +24,4 @@ public class Client {
         socket.close();
     }
 }
+

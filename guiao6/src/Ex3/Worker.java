@@ -20,7 +20,7 @@ public class Worker implements Runnable{
 
             PrintWriter out = new PrintWriter(clSock.getOutputStream());
             String r;
-            while ((r = in.readLine()) != null) {
+            while ((r = in.readLine()) != null && ! r.equals("quit")) {
                 System.out.println(r);
                 out.println(r);
                 out.flush();
