@@ -1,0 +1,2 @@
+public class Integer {
+}
