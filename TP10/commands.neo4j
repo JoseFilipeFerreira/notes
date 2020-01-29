@@ -1,0 +1,44 @@
+# 1
+MATCH (n) RETURN count(n) as count
+
+# 2
+MATCH ()-[r]->() RETURN count(r) as count
+
+# 3
+MATCH (people:Person)-[:ACTED_IN]->(:Movie {title:"The Matrix"})
+RETURN people
+
+# 4
+MATCH (people:Person{name:"Tom Hanks"})-[:ACTED_IN]->(movie:Movie)
+RETURN movie
+
+# 5
+MATCH (people:Person{name:"Tom Hanks"})-[:ACTED_IN]->(movie:Movie)
+WHERE movie.released >= 2000
+RETURN movie
+
+# 6
+MATCH (d:Person)-[:DIRECTED]->(:Movie)<-[:ACTED_IN]-(d)
+RETURN d
+
+# 7
+MATCH (:Person{name:"Keanu Reeves"})-[:ACTED_IN{roles:["Neo"]}]->(m:Movie)
+RETURN m
+
+# 8
+MATCH (a:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(d:Person)
+RETURN a, d.name
+
+# 9
+MATCH (a:Person)-[:ACTED_IN]->(m:Movie)
+RETURN a, count(m)
+
+# 10
+MATCH (a:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(d:Person)
+RETURN a, d, count(m)
+
+# 11
+MATCH (a:Person)-[:ACTED_IN]->(m:Movie)
+WITH a, count(m) as c
+RETURN a ORDER BY c DESC LIMIT 5
+
