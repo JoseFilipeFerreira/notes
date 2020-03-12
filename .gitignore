@@ -78,6 +78,7 @@ LivroBD.pdf
 *.exe
 *.out
 *.app
+
 *.i*86
 *.x86_64
 *.hex
@@ -107,3 +108,9 @@ Report.*
 tests/
 db/*
 META-INF/
+
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+class*
