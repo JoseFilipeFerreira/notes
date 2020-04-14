@@ -55,7 +55,6 @@ void drawTerrain() {
     for (unsigned int i = 0; i < ih - 1; i++) {
         glDrawArrays(GL_TRIANGLE_STRIP, i * 2 * iw, iw * 2);
     }
-    // TRIANGLE_STRIPS
 }
 
 float h(int x, int z) {
@@ -89,8 +88,7 @@ generate_trees(int number, float min_dist, float plane_size) {
             z = rng();
         } while (std::sqrt(x * x + z * z) < min_dist);
 
-        points.emplace_back(x, hf(x - plane_size/2, z-plane_size/2), z);
-        std::cout << hf(x - plane_size/2, z-plane_size/2) << "\n";
+        points.emplace_back(x, hf(x - plane_size / 2, z - plane_size / 2), z);
     }
     return points;
 }
@@ -156,6 +154,10 @@ void renderScene(void) {
     glLoadIdentity();
     gluLookAt(camX, camY, camZ, 0.0, 0.0, 0.0, 0.0f, 1.0f, 0.0f);
 
+    glColor3f(0.2f, 0.8f, 0.2f);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    drawTerrain();
+    glDisableClientState(GL_VERTEX_ARRAY);
 
     static auto tree_pos = generate_trees(1000, 50, 256);
     for (auto const& p : tree_pos) draw_tree(p);
@@ -164,11 +166,6 @@ void renderScene(void) {
 
     glColor3f(1, 0, .498);
     glutSolidTorus(0.5, 1.6, 10, 10);
-
-    glColor3f(0.2f, 0.8f, 0.2f);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    drawTerrain();
-    glDisableClientState(GL_VERTEX_ARRAY);
 
     // End of frame
     glutSwapBuffers();
@@ -291,7 +288,6 @@ int main(int argc, char** argv) {
     glEnable(GL_NORMALIZE);
 
     glPolygonMode(GL_FRONT, GL_LINE);
-    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     glewInit();
     ilInit();
