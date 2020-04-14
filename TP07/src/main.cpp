@@ -22,6 +22,8 @@ int startX, startY, tracking = 0;
 
 int alpha = 0, beta = 45, r = 50;
 
+float camera_x, camera_z = 0;
+
 GLuint buffers[1];
 size_t ih, iw;
 unsigned char* imageData;
@@ -146,13 +148,23 @@ void draw_indians(int n_indians, float radius) {
 }
 
 void renderScene(void) {
-    float pos[4] = {-1.0, 1.0, 1.0, 0.0};
-
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glLoadIdentity();
-    gluLookAt(camX, camY, camZ, 0.0, 0.0, 0.0, 0.0f, 1.0f, 0.0f);
+
+    float camera_y = 0.5 + hf(camera_x + iw /2, camera_z + ih /2);
+
+    gluLookAt(
+        camera_x,
+        camera_y,
+        camera_z,
+        camera_x + 1,
+        camera_y,
+        camera_z,
+        0.0f,
+        1.0f,
+        0.0f);
 
     glColor3f(0.2f, 0.8f, 0.2f);
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -173,59 +185,32 @@ void renderScene(void) {
 
 void processKeys(unsigned char key, int xx, int yy) {
     // put code to process regular keys in here
-}
-
-void processMouseButtons(int button, int state, int xx, int yy) {
-    if (state == GLUT_DOWN) {
-        startX = xx;
-        startY = yy;
-        if (button == GLUT_LEFT_BUTTON)
-            tracking = 1;
-        else if (button == GLUT_RIGHT_BUTTON)
-            tracking = 2;
-        else
-            tracking = 0;
-    } else if (state == GLUT_UP) {
-        if (tracking == 1) {
-            alpha += (xx - startX);
-            beta += (yy - startY);
-        } else if (tracking == 2) {
-            r -= yy - startY;
-            if (r < 3) r = 3.0;
-        }
-        tracking = 0;
+    switch (key) {
+        case 'w':
+            camera_x += 0.1;
+            break;
+        case 's':
+            camera_x -= 0.1;
+            break;
+        case 'a':
+            camera_z -= 0.1;
+            break;
+        case 'd':
+            camera_z += 0.1;
+            break;
+        case 'W':
+            camera_x += 1;
+            break;
+        case 'S':
+            camera_x -= 1;
+            break;
+        case 'A':
+            camera_z -= 1;
+            break;
+        case 'D':
+            camera_z += 1;
+            break;
     }
-}
-
-void processMouseMotion(int xx, int yy) {
-    int deltaX, deltaY;
-    int alphaAux, betaAux;
-    int rAux;
-
-    if (!tracking) return;
-
-    deltaX = xx - startX;
-    deltaY = yy - startY;
-
-    if (tracking == 1) {
-        alphaAux = alpha + deltaX;
-        betaAux = beta + deltaY;
-
-        if (betaAux > 85.0)
-            betaAux = 85.0;
-        else if (betaAux < -85.0)
-            betaAux = -85.0;
-
-        rAux = r;
-    } else if (tracking == 2) {
-        alphaAux = alpha;
-        betaAux = beta;
-        rAux = r - deltaY;
-        if (rAux < 3) rAux = 3;
-    }
-    camX = rAux * sin(alphaAux * 3.14 / 180.0) * cos(betaAux * 3.14 / 180.0);
-    camZ = rAux * cos(alphaAux * 3.14 / 180.0) * cos(betaAux * 3.14 / 180.0);
-    camY = rAux * sin(betaAux * 3.14 / 180.0);
 }
 
 void init() {
@@ -297,9 +282,6 @@ int main(int argc, char** argv) {
     glutDisplayFunc(renderScene);
     glutIdleFunc(renderScene);
     glutReshapeFunc(changeSize);
-
-    glutMouseFunc(processMouseButtons);
-    glutMotionFunc(processMouseMotion);
 
     // Callback registration for keyboard processing
     glutKeyboardFunc(processKeys);
