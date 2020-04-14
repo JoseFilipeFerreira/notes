@@ -23,6 +23,7 @@ int startX, startY, tracking = 0;
 int alpha = 0, beta = 45, r = 50;
 
 float camera_x, camera_z = 0;
+float camera_angle = 0;
 
 GLuint buffers[1];
 size_t ih, iw;
@@ -90,7 +91,7 @@ generate_trees(int number, float min_dist, float plane_size) {
             z = rng();
         } while (std::sqrt(x * x + z * z) < min_dist);
 
-        points.emplace_back(x, hf(x - plane_size / 2, z - plane_size / 2), z);
+        points.emplace_back(x, hf(x + plane_size / 2, z + plane_size / 2), z);
     }
     return points;
 }
@@ -153,15 +154,15 @@ void renderScene(void) {
 
     glLoadIdentity();
 
-    float camera_y = 0.5 + hf(camera_x + iw /2, camera_z + ih /2);
+    float camera_y = 0.5 + hf(camera_x + iw / 2, camera_z + ih / 2);
 
     gluLookAt(
         camera_x,
         camera_y,
         camera_z,
-        camera_x + 1,
+        camera_x + std::sin(camera_angle),
         camera_y,
-        camera_z,
+        camera_z + std::cos(camera_angle),
         0.0f,
         1.0f,
         0.0f);
@@ -187,28 +188,42 @@ void processKeys(unsigned char key, int xx, int yy) {
     // put code to process regular keys in here
     switch (key) {
         case 'w':
-            camera_x += 0.1;
+            camera_x += 0.1 * std::sin(camera_angle);
+            camera_z += 0.1 * std::cos(camera_angle);
             break;
         case 's':
-            camera_x -= 0.1;
+            camera_x += 0.1 * std::sin(180 + camera_angle);
+            camera_z += 0.1 * std::cos(180 + camera_angle);
             break;
         case 'a':
-            camera_z -= 0.1;
+            camera_x += 0.1 * std::sin(camera_angle + 90);
+            camera_z += 0.1 * std::cos(camera_angle + 90);
             break;
         case 'd':
-            camera_z += 0.1;
+            camera_x += 0.1 * std::sin(camera_angle - 90);
+            camera_z += 0.1 * std::cos(camera_angle - 90);
             break;
         case 'W':
-            camera_x += 1;
+            camera_x += std::sin(camera_angle);
+            camera_z += std::cos(camera_angle);
             break;
         case 'S':
-            camera_x -= 1;
+            camera_x += std::sin(180 + camera_angle);
+            camera_z += std::cos(180 + camera_angle);
             break;
         case 'A':
-            camera_z -= 1;
+            camera_x += std::sin(camera_angle + 90);
+            camera_z += std::cos(camera_angle + 90);
             break;
         case 'D':
-            camera_z += 1;
+            camera_x += std::sin(camera_angle - 90);
+            camera_z += std::cos(camera_angle - 90);
+            break;
+        case 'h':
+            camera_angle += 0.1;
+            break;
+        case 'l':
+            camera_angle -= 0.1;
             break;
     }
 }
@@ -248,6 +263,10 @@ void init() {
         }
     }
 
+    /* Se comentar o resto desta função os teapots aparecem
+     * Se não comentar o terreno aparece
+     */
+    /*
     glGenBuffers(1, buffers);
     glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
     glBufferData(
@@ -255,6 +274,7 @@ void init() {
         sizeof(float) * vec.size(),
         vec.data(),
         GL_STATIC_DRAW);
+        */
 }
 
 int main(int argc, char** argv) {
