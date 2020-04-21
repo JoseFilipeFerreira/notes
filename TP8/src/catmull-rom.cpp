@@ -1,6 +1,5 @@
 #include "point.hpp"
 
-#include <iostream>
 #include <stdlib.h>
 #define _USE_MATH_DEFINES
 #include <vector>
@@ -146,8 +145,6 @@ void renderScene(void) {
     renderCatmullRomCurve();
 
     auto const elapsed = glutGet(GLUT_ELAPSED_TIME) / 1000.0f;
-
-    std::cout << elapsed << "\n";
 
     auto point_dir = get_location(elapsed);
     auto p = std::get<0>(point_dir);
