@@ -1,0 +1,32 @@
+%{
+#include "y.tab.h"
+#include <math.h>
+void yyerror(char*);
+%}
+%option noyywrap yylineno
+
+%%
+
+int               {return INT;}
+ler               {return LER;}
+escrever          {return ESCREVER;}
+
+[a-zA-Z]          {yylval.c = yytext[0]; return VAR;}
+[0-9]+            {yylval.n = atoi(yytext); return NUM;}
+
+[;()+\-*\/^=]     {return yytext[0];}
+[\n\t ]                ;
+
+#.*                ;
+.                  {yyerror("Caracter Invalido");}
+
+%%
+
+
+
+
+
+
+
+
+

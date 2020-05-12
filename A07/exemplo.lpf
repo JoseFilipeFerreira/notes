@@ -1,0 +1,5 @@
+int a;
+int b;
+a = ler;
+b = 5 + a;
+escrever b;
