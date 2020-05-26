@@ -1,0 +1,9 @@
+int a;
+
+for (a = 1; a < 10; a = a + 1;) {
+    escrever "Se ";
+    escrever a;
+    escrever " elefante chateia muita gente. ";
+    escrever a + 1;
+    escrever " chateia muito mais\n";
+}

@@ -1,0 +1,10 @@
+int a;
+a = 1;
+while (a < 10) {
+    escrever "Se ";
+    escrever a;
+    escrever " elefante chateia muita gente. ";
+    escrever a + 1;
+    escrever " chateia muito mais\n";
+    a = a + 1;
+}

@@ -1,0 +1,5 @@
+int a;
+a = 0;
+while (a) {
+    escrever "Se um elefante chateia muita gente.";
+}
