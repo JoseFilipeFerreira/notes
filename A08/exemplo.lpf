@@ -1,0 +1,23 @@
+int a;
+int b;
+a = ler;
+b = 5 + a;
+escrever b;
+
+# pushi 0  // a ... 0
+# pushi 0  // b ... 1
+# start
+# read // string no topo da stack
+# atoi // int
+# storeg 0 // 0 ... a
+
+# //b = 5 + a
+# pushi 5
+# pushg 0 // a ... 0
+# add
+# storeg 1
+
+# pushg 1
+# writei
+
+# stop

@@ -1,0 +1,9 @@
+
+start
+pushi 33
+writei
+
+pushs " batatas\n" 
+writes
+
+stop

@@ -1,0 +1,18 @@
+
+pushi 0//a
+pushs "" //b
+start
+read
+atoi
+storeg 0 //a
+read
+storeg 1 //b
+pushg 0 // a
+pushg 0 // a
+add
+writei
+
+pushg 1 // b
+writes
+
+stop

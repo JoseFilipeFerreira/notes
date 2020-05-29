@@ -1,0 +1,35 @@
+
+pushi 0//a
+start
+pushi 1
+storeg 0 //a
+while1:
+pushg 0 // a
+pushi 10
+inf
+jz fim1
+
+pushs "Se " 
+writes
+
+pushg 0 // a
+writei
+
+pushs " elefante chateia muita gente. " 
+writes
+
+pushg 0 // a
+pushi 1
+add
+writei
+
+pushs " chateia muito mais\n" 
+writes
+
+pushg 0 // a
+pushi 1
+add
+storeg 0 //a
+jump while1
+fim1:
+stop
