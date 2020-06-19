@@ -1,0 +1,60 @@
+
+1 S → exp .
+
+2 exp → INT
+3     | ( fun )
+   
+4 fun → * lista
+5     | + lista
+
+6 lista → 
+7      | exp lista
+
+=== Simbolos anuláveis
+anulavel = { lista }
+
+=== First
+fi(S) = fi(exp) = { INT ( }
+fi(lista) = fi(exp) = { INT ( }
+fi(exp) = { INT ( }
+fi(fun) = { + * }
+=== Follows
+
+fo(exp)   = (1) { . } ∪ (7) fi(lista) ∪ fo(lista)
+fo(lista) = (4) fo(fun) ∪ (5) fo(fun) ∪ (7) fo(lista)
+fo(fun)   = (3) { ) }
+
+Calculo do ponto fixo :
+fo(exp)   = {}
+fo(lista) = {}
+fo(fun)   = {}
+
+fo(exp)   = {INT ( . }
+fo(lista) = {}
+fo(fun)   = { ) }
+
+fo(exp)   = {INT ( . }
+fo(lista) = { ) }
+fo(fun)   = { ) }
+
+
+fo(exp)   = {INT ( . ) }
+fo(lista) = { ) }
+fo(fun)   = { ) }
+
+=== Lookaheads
+
+1  loo(S → exp .) = fi(exp .) = fi(exp) = {INT ( }
+
+2  loo(exp → INT ) = { INT} 
+3  loo(exp → ( fun ) ) = { ( } 
+
+4  loo(fun → * lista)=fi(* lista) = {*}
+5  loo(fun → + lista)=fi(+ lista) = {+}
+
+6  loo(lista → epsilon) = fi(epsilon) ∪ fo(lista) = {} ∪ { ) } = {)}
+7  loo(lista → exp lista)=fi(exp lista) = fi(exp) = {INT ( }
+
+===
+TPC: calcular Lookaheads de outras gramáticas
+

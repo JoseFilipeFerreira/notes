@@ -1,0 +1,87 @@
+1 S → exp .
+
+2 exp → INT
+3     | ( fun )
+   
+4 fun → * lista
+5     | + lista
+
+6 lista → 
+7      | exp lista
+
+==
+( + 3 4 )
+( fun )
+  + lista
+    3
+    exp
+      4
+      exp
+      exp lista
+==
+O que é que isto pode ser?
+estado de possiveis situações 
+==
+Rec Bottom UP (autómato LR0)
+==
+1 S → exp $
+
+2 exp → INT
+3     | ( fun )
+   
+4 fun → * lista
+5     | + lista
+
+6 lista → 
+7      | exp lista
+==
+|1  S → . exp $      |  INT → 3
+-                    |  (   → 4
+|   exp → . INT      |  exp → 2
+|   exp → . ( fun )  |
+==
+|2  S → exp . $      |  $ → reconhecimento
+==
+|3  exp → INT .      ||  RedP2
+==
+|4  exp → ( . fun )  |  fun → 5  
+-                    |  *   → 6
+|   fun → . * lista  |  +   → 7
+|   fun → . + lista  |
+==
+|5  exp → ( fun . )  |  )  → 8 
+==
+|6  fun → * . lista     | lista → 9
+-                       |
+|   lista → .           || RedP6
+|   lista → . exp Lista | exp → 10
+|   exp → . INT         | INT → 3
+|   exp → . ( fun )     | ( → 4
+==
+|7  fun → + . lista     | lista → 11
+-                       |
+|   lista → .          || RedP6
+|   lista → . exp Lista | exp → 10
+|   exp → . INT         | INT → 3
+|   exp → . ( fun )     | ( → 4
+==
+|8  exp → ( fun ) .     || RedP3
+==
+|9  fun → * lista .     || RedP4
+==
+| 10 lista →  exp . Lista | Lista → 12
+-
+|   lista → .           || RedP6
+|   lista → . exp Lista  | exp → 10
+==
+|11  fun → + lista .     || RedP5
+==
+|12 lista →  exp Lista . || RedP7
+===
+
+Conclusoes    Estado          ( + 3 4 )           Caminho
+              1                           t 4      1 → 4
+(             4               + 3 4 )     t 7      1 4 7
+( +           7               3 4 )       t 3      1 4 7 3
+( + INT       3               4 )         RedP2    1 4 7 (3↓ ↑10) 
+( + exp       10              4 )         
