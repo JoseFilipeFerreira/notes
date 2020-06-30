@@ -266,7 +266,6 @@ void init() {
     /* Se comentar o resto desta função os teapots aparecem
      * Se não comentar o terreno aparece
      */
-    /*
     glGenBuffers(1, buffers);
     glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
     glBufferData(
@@ -274,7 +273,6 @@ void init() {
         sizeof(float) * vec.size(),
         vec.data(),
         GL_STATIC_DRAW);
-        */
 }
 
 int main(int argc, char** argv) {
