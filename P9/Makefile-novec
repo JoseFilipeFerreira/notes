@@ -1,0 +1,47 @@
+# source files.
+SRC = main.c vec-kernel.c my_papi.c
+
+OBJ = $(SRC:.cpp=.o)
+
+OUT = novec-kernel
+
+# include directories
+INCLUDES = -I. -I/share/apps/papi/5.4.1/include
+ 
+# C compiler flags 
+CCFLAGS = -O2 -march=ivybridge -fno-inline -Wall
+# compiler
+CCC = gcc
+
+# library paths
+LIBS = -L/share/apps/papi/5.4.1/lib -lm -lpapi
+
+# compile flags
+#LDFLAGS = -g
+
+.SUFFIXES: .cpp .c 
+
+
+default: $(OUT)
+
+.cpp.o:
+	module load gcc/5.3.0 papi/5.4.1 ; \
+	$(CCC) $(CCFLAGS) $(INCLUDES)  -c $< -o $@
+
+.c.o:
+	module load gcc/5.3.0 papi/5.4.1 ; \
+	$(CCC) $(CCFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OUT): $(OBJ)
+	module load gcc/5.3.0 papi/5.4.1 ; \
+	$(CCC) -o $(OUT) $(CCFLAGS) $(OBJ) $(INCLUDES) $(LIBS) 
+	module load gcc/5.3.0 papi/5.4.1 ; \
+	$(CCC) -o novec-kernel.s -S $(CCFLAGS) $(INCLUDES) vec-kernel.c
+
+depend:  dep
+#
+#dep:
+#	makedepend -- $(CFLAGS) -- $(INCLUDES) $(SRC)
+
+clean:
+	rm -f *.o .a *~ Makefile.bak  $(OUT)
