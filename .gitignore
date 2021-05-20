@@ -1,3 +1,5 @@
+*.vpp.bak_*
+
 # Compiled class file
 *.class
 
