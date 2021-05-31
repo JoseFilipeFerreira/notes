@@ -1,0 +1,32 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-20.04"
+
+  config.vm.define "sdb1" do |sdb1|
+    sdb1.vm.network "private_network", ip: "10.0.0.101"
+    sdb1.vm.hostname = "sdb1"
+  end
+
+  config.vm.define "sdb2" do |sdb2|
+    sdb2.vm.network "private_network", ip: "10.0.0.102"
+    sdb2.vm.hostname = "sdb2"
+  end
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 1024
+    vb.cpus = 1
+  end
+
+  PUBLIC_KEY = File.read (File.expand_path ('~/.ssh/id_rsa.pub')).strip
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get -y update
+    apt-get -y upgrade
+    apt-get -y autoremove
+    apt-get install -y vim
+    echo "#{PUBLIC_KEY }" >> /home/vagrant/.ssh/authorized_keys
+  SHELL
+
+end
