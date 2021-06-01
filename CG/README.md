@@ -2,14 +2,8 @@
 
 Files from the course CG(Computer Graphics)@UMinho.
 
-## Slides
-* [Culling and Partitioning](slides/culling.pdf)
-* [Curves and Surfaces](slides/bezier.pdf)
-* [Curves and Surfaces](slides/curvas_e_superficies.pdf)
-* [Lighting](slides/iluminacao.pdf)
-* [Texturing](slides/texturas.pdf)
-
 ## Pratical Classes
+
 * [TP01 - openGL Primitives](TP01)
 * [TP02 - User Input](TP02)
 * [TP03 - Drawing a Cylinder](TP03)
