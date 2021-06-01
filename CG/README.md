@@ -4,6 +4,8 @@ Files from the course CG(Computer Graphics)@UMinho.
 
 ## Pratical Classes
 
+* [F01 - Geometric Transformations](F01)
+* [F02 - Geometric Transformations](F02)
 * [TP01 - openGL Primitives](TP01)
 * [TP02 - User Input](TP02)
 * [TP03 - Drawing a Cylinder](TP03)
