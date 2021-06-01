@@ -29,6 +29,7 @@ Engineering @ UMinho
 ## 📘 4th year
 
 * [Advanced Architectures](AA) (11)
+* [Computer Engineering Systems](ESC)
 * [Parallel Algorithms](AP)
 * [Parallel Computing Paradigms](PCP) (16)
 * [System Deployment and Benchmarking](SDB) (11)
