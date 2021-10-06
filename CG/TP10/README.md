@@ -4,5 +4,7 @@ Terrain HeightMap            |  Terrain Texture
 :-------------------------:|:-------------------------:
 ![](src/terreno.jpg)  |  ![](src/relva.jpg)
 
+## Final Result
+
 ![](left.png)
 ![](right.png)
