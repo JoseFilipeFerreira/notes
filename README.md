@@ -12,7 +12,7 @@ Engineering @ UMinho
 
 * [Computer Architecture](ArqC) (16)
 * [Object Oriented Programming](POO) (14)
-* [Operative Systems](SO) (13)
+* [Operating Systems](SO) (13)
 * [Program Calculus](CP) (13)
 * [R](R) (16)
 
@@ -31,7 +31,6 @@ Engineering @ UMinho
 * [Advanced Architectures](AA) (11)
 * [Parallel Algorithms](AP)
 * [Parallel Computing Paradigms](PCP) (16)
-* [System Deployment and Benchmarking](SDB) (11)
 
 ## 📓 5th year
 
