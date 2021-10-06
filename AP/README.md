@@ -1,6 +1,6 @@
 # Parallel Algorithms
 
-Files from the course AP(Parallel Algorithms)@UMinho.
+Files from the course Parallel Algorithms @UMinho.
 
 ## Pratical Classes
 
