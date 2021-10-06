@@ -17,7 +17,7 @@ format long;
 [x,fval,exitflag, output] = fsolve('funEX1TESTETIPO', x1, op)
 ```
 
-**RESULTADO**
+**Result**
 ```Matlab
 x1 = 0.202868440507818
 x2 = 1.149731058980664
@@ -46,7 +46,7 @@ op2 = optimset('tolx',0.1);
 [x,fval,exitflag, output] = fsolve('funEX2TESTETIPO', 0.04, op2)
 ```
 
-**RESULTADO**
+**Result**
 ```Matlab
 x =   0.040954076659222
 fval =  3.565524764326256e-09
@@ -73,7 +73,7 @@ format long;
 polyval(p2,2.8)
 ```
 
-**RESULTADO**
+**Result**
 ```Matlab
 a) polival = 2.220000000000001
 
@@ -90,7 +90,7 @@ s3 = spline(xi, [-2 f_xi 3]);
 s3.coefs
 ```
 
-**RESULTADO**
+**Result**
 ```Matlab
 8.631332599118954  -6.715666299559479  -2.000000000000000   4.900000000000000
  -12.602491740088112   6.231332599118951  -2.242166850220264   3.300000000000000
@@ -130,18 +130,19 @@ v = [0 10 30 25 10 28 40 42 30];
 trapz(t,v)
 ```
 
-**RESULTADO**
+**Result**
 ```Matlab
 comprimento = 2.392500000000000e+03
 ```
 ## EX5
+
 **Command Window**
 ```Matlab
 quadl('x.*(1-exp(-x))+x.^3',0,10)
 quad('x.*(1-exp(-x))+x.^3',0,10)
 ```
 
-**RESULTADO**
+**Result**
 ```Matlab
 quadl = 2.549000499399404e+03
 quad = 2.549000499438770e+03
