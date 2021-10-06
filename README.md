@@ -24,7 +24,7 @@ Engineering @ UMinho
 * [Language Processing](PL) (16)
 * [Numeric Methods and non-Linear Optimization](MNOL) (11)
 * [Prolog](SRCR) (15)
-* [Software System's Development](DSS) (12)
+* [Software Systems Development](DSS) (12)
 
 ## 📘 4th year
 

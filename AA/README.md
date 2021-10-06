@@ -1,6 +1,6 @@
-# AA
+# Advanced Architectures
 
-Files from the course AA(Advanced Architectures)@UMinho.
+Files from the course Advanced Architectures @UMinho.
 
 ## Pratical Classes
 

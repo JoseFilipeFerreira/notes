@@ -1,6 +1,6 @@
 # Computer Graphics
 
-Files from the course CG(Computer Graphics)@UMinho.
+Files from the course Computer Graphics @UMinho.
 
 ## Pratical Classes
 
