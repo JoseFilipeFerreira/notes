@@ -1,4 +1,4 @@
-# CG
+# Computer Graphics
 
 Files from the course CG(Computer Graphics)@UMinho.
 
@@ -18,8 +18,4 @@ Files from the course CG(Computer Graphics)@UMinho.
 * [TP10 - Terrain II - add light and texture](TP10)
 * [TP11 - Texturing - Cylinder](TP11)
 * [TP12 - Picking and writing text](TP12)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
