@@ -1,6 +1,6 @@
-#include <stdio.h>
 #include <math.h>
 #include <omp.h>
+#include <stdio.h>
 
 // task size 10 = 12.8 ms ±   0.8 ms
 // task size 1000 = 8.3 ms ±   0.8 ms
@@ -10,10 +10,10 @@
 //
 // static = 9.0 ms ±   1.7 ms
 
-int main(){
+int main() {
     int result[1] = {0};
 #pragma omp parallel for schedule(dynamic, 2000)
-    for(int i=0; i<1000000;i++) {
-        result[0]+=sin(i);
+    for (int i = 0; i < 1000000; i++) {
+        result[0] += sin(i);
     }
 }
