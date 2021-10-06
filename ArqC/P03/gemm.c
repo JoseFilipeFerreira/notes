@@ -1,9 +1,9 @@
-#include <stdio.h>
-
 #include "gemm.h"
 
+#include <stdio.h>
+
 #if defined(_OPENMP)
-#include <omp.h>
+#    include <omp.h>
 #endif
 
 /*
@@ -11,17 +11,17 @@
  * Algoritmo não optimizado
  */
 
-void gemm1  (float *a, float *b, float *c, int n) {
-	int i, j, k;
+void gemm1(float* a, float* b, float* c, int n) {
+    int i, j, k;
 
-	for (j = 0; j < n; ++j) {
-		for(k = 0; k < n; k++ ) {
-			for (i = 0; i < n; ++i) {
-				/* c[i][j] += a[i][k]*b[k][j] */
-				c[i*n+j] += a[i*n+k] * b[k*n+j]; 
-			}
-		}
-	}
+    for (j = 0; j < n; ++j) {
+        for (k = 0; k < n; k++) {
+            for (i = 0; i < n; ++i) {
+                /* c[i][j] += a[i][k]*b[k][j] */
+                c[i * n + j] += a[i * n + k] * b[k * n + j];
+            }
+        }
+    }
 }
 
 /*
@@ -30,107 +30,104 @@ void gemm1  (float *a, float *b, float *c, int n) {
  *
  */
 
-void gemm2 (float *a, float *b, float *c, int n) {
-	int i, j , k;
+void gemm2(float* a, float* b, float* c, int n) {
+    int i, j, k;
 
-	for (i = 0; i < n; ++i){
-		for (k = 0;k < n; ++k){
-			for (j =  0; j < n; ++j){
-				/* c[i][j] += a[i][k]*b[k][j];*/
-				c[i*n+j] += a[i*n+k]*b[k*n+j];
-			}
-		}
-	}
+    for (i = 0; i < n; ++i) {
+        for (k = 0; k < n; ++k) {
+            for (j = 0; j < n; ++j) {
+                /* c[i][j] += a[i][k]*b[k][j];*/
+                c[i * n + j] += a[i * n + k] * b[k * n + j];
+            }
+        }
+    }
 }
 
 /*
  * gemm3
- * Algoritmo 
+ * Algoritmo
  */
 
-void gemm3  (float *a, float *b, float *c, int n) {
-	int i, j, k, aik; 
+void gemm3(float* a, float* b, float* c, int n) {
+    int i, j, k, aik;
 
-	for(i=0;i < n; ++i){
-		for(k=0;k < n; ++k ){
-			aik = a[i*n+k];
-			for(j=0;j < n; ++j){
-				/*c[i][j] += aik b[k][j];*/
-				c[i*n+j] += aik * b[k*n+j];
-			}
-		}
-	}
+    for (i = 0; i < n; ++i) {
+        for (k = 0; k < n; ++k) {
+            aik = a[i * n + k];
+            for (j = 0; j < n; ++j) {
+                /*c[i][j] += aik b[k][j];*/
+                c[i * n + j] += aik * b[k * n + j];
+            }
+        }
+    }
 }
 
 /*
  * gemm4
- * Algoritmo 
+ * Algoritmo
  */
 
-void gemm4  (float *a, float *b, float *c, int n) {
-  fprintf (stderr, "gemm4() not supported!\n\n");
-  return ;
+void gemm4(float* a, float* b, float* c, int n) {
+    fprintf(stderr, "gemm4() not supported!\n\n");
+    return;
 }
 
 /*
  * gemm5
- * Algoritmo 
+ * Algoritmo
  */
 
-void gemm5  (float *a, float *b, float *c, int n) {
-  fprintf (stderr, "gemm5() not supported!\n\n");
-  return ;
+void gemm5(float* a, float* b, float* c, int n) {
+    fprintf(stderr, "gemm5() not supported!\n\n");
+    return;
 }
 
 /*
  * gemm6
- * Algoritmo 
+ * Algoritmo
  */
 
-void gemm6  (float *a, float *b, float *c, int n) {
-  fprintf (stderr, "gemm6() not supported!\n\n");
-  return ;
+void gemm6(float* a, float* b, float* c, int n) {
+    fprintf(stderr, "gemm6() not supported!\n\n");
+    return;
 }
 
 /*
  * gemm7
- * Algoritmo 
+ * Algoritmo
  */
 
-void gemm7  (float *a, float *b, float *c, int n) {
-  fprintf (stderr, "gemm7() not supported!\n\n");
-  return ;
+void gemm7(float* a, float* b, float* c, int n) {
+    fprintf(stderr, "gemm7() not supported!\n\n");
+    return;
 }
 
 /*
  * gemm8
- * Algoritmo 
+ * Algoritmo
  */
 
-void gemm8  (float *a, float *b, float *c, int n) {
-  fprintf (stderr, "gemm8() not supported!\n\n");
-  return ;
+void gemm8(float* a, float* b, float* c, int n) {
+    fprintf(stderr, "gemm8() not supported!\n\n");
+    return;
 }
 
 /*
  * gemm9
- * Algoritmo 
+ * Algoritmo
  */
 
-void gemm9  (float *a, float *b, float *c, int n) {
-  fprintf (stderr, "gemm9() not supported!\n\n");
-  return ;
+void gemm9(float* a, float* b, float* c, int n) {
+    fprintf(stderr, "gemm9() not supported!\n\n");
+    return;
 }
 
 /*
  * gemm10
- * Algoritmo 
+ * Algoritmo
  */
 
-void gemm10  (float *a, float *b, float *c, int n) {
-  fprintf (stderr, "gemm10() not supported!\n\n");
-  return ;
+void gemm10(float* a, float* b, float* c, int n) {
+    fprintf(stderr, "gemm10() not supported!\n\n");
+    return;
 }
-
-
-
