@@ -29,7 +29,7 @@ Engineering @ UMinho
 ## 📘 4th year
 
 * [Advanced Architectures](AA) (11)
-* [Parallel Algorithms](AP)
+* [Parallel Algorithms](AP) (15)
 * [Parallel Computing Paradigms](PCP) (16)
 
 ## 📓 5th year
