@@ -31,6 +31,7 @@ Engineering @ UMinho
 * [Advanced Architectures](AA) (11)
 * [Parallel Algorithms](AP) (15)
 * [Parallel Computing Paradigms](PCP) (16)
+* [System Deployment and Benchmarking](SDB) (11)
 
 ## 📓 5th year
 
