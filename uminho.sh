@@ -47,9 +47,9 @@ echo "
 12, 2.0, Engenharia de Sistemas de Computação
 17, 2.0, Visualização e Iluminação II
 16, 2.0, Tecnologias e Aplicações
-18, 4.0, Laboratório em Engenharia Informática
-17, 6.0, Projeto de Informática
-0, , Dissertação
+18, 2.0, Laboratório em Engenharia Informática
+17, 3.0, Projeto de Informática
+0, 9.0, Dissertação
 " | awk -F',' \
     '{ mult += $2; sum += $1 * $2 }
      $1 > 0 { mult0 += $2; sum0 += $1 * $2 }
