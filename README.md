@@ -7,6 +7,7 @@ Engineering @ UMinho
 
 * [Functional Programming](PF) (19)
 * [Imperative Programming](PI) (14)
+* [Elements of Systems Engineering](EES)
 
 ## 📗 2nd year
 
@@ -32,6 +33,7 @@ Engineering @ UMinho
 * [Parallel Algorithms](AP) (15)
 * [Parallel Computing Paradigms](PCP) (16)
 * [System Deployment and Benchmarking](SDB) (11)
+* [Visualisation and Ilumination](VI)
 
 ## 📓 5th year
 
