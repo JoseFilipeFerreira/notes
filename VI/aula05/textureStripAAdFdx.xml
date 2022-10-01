@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<project name="Texture Strip" >
+
+	<assets>
+	
+		<attributes>
+			<attribute type="COLOR" name="factor" data="FLOAT" value=1.5 />
+			<attribute type="COLOR" name="width" data="FLOAT" value=0.5 />
+			<attribute type="COLOR" name="div" data="FLOAT" value=8 />
+			<attribute type="COLOR" name="otherColor" data="VEC4" r=0.2 g=0.4 b=0.6 a =1.0 />
+		</attributes>
+		
+		<scenes>
+			<scene name="MySceneT" param="UNITIZE SWAP_YZ">
+				<file name="models/Teapot.3ds"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<NEAR value= 0.001/>
+				<FAR value= 10/>
+				<POSITION x=0 y=0 z=3 />
+				<VIEW x=0 y=0 z=-1.0 />
+			</camera>
+		</cameras>
+		
+		<materialLibs>
+			<materialLib filename="textureStripAAdFdx.mlib" />
+		</materialLibs>
+		
+	</assets>
+	
+	<pipelines>
+	
+		<pipeline name="textures" default="true">
+			<pass class="default" name="textureCoordinates">
+				<scenes>
+					<scene name="MySceneT" />
+				</scenes>
+				<camera name="MainCamera" />
+				<materialMaps>
+					<map fromMaterial="*" toMaterial="texStripAAdFdx" toLibrary="TextureStrip" />
+				</materialMaps>
+			</pass>
+		</pipeline>
+		
+	</pipelines>
+	
+	<interface>
+	
+		<window label="Main Window">
+			<var label="factor" 
+					type="COLOR" context="TextureStrip::texStripAAdFdx" component="factor" def="min=0.001 max=100 step=0.1"/>
+			<var label="div" 
+					type="COLOR" context="TextureStrip::texStripAAdFdx" component="div" def="min=1 max=10 step=1"/>
+			<var label="width" 
+					type="COLOR" context="TextureStrip::texStripAAdFdx" component="width" def="min=0 max=1 step=0.01"/>
+			<var label="diffuse" 
+					type="COLOR" context="TextureStrip::texStripAAdFdx" component="DIFFUSE" mode="COLOR"/>
+			<var label="other color" 
+					type="COLOR" context="TextureStrip::texStripAAdFdx" component="otherColor" mode="COLOR"/>
+		</window>
+		
+	</interface>
+	
+</project>

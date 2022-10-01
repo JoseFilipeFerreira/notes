@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<project name="Texture Strip Antialias I" >
+	<assets>
+	
+		<attributes>
+			<attribute type="COLOR" name="width" data="FLOAT" value=0.5 />
+			<attribute type="COLOR" name="div" data="FLOAT" value=8 />
+			<attribute type="COLOR" name="gap" data="FLOAT" value=0.04 />
+			<attribute type="COLOR" name="otherColor" data="VEC4" r=0.2 g=0.4 b=0.6 />
+		</attributes>
+		<scenes>
+			<scene name="MySceneT" param="UNITIZE SWAP_YZ">
+				<file name="models/Teapot.3ds"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<NEAR value= 0.1 />
+				<FAR value = 100.0 />
+				<POSITION x=0 y=0 z=3 />
+				<VIEW x=0 y=0 z=-1.0 />
+			</camera>
+		</cameras>
+		
+		<materialLibs>
+			<materialLib filename="textureStripAA1.mlib" />
+		</materialLibs>
+		
+	</assets>
+	
+	<pipelines>
+		<pipeline name="textures" default="true">
+			<pass class="default" name="textureCoordinates">
+				<scenes>
+					<scene name="MySceneT" />
+				</scenes>
+				<camera name="MainCamera" />
+				<materialMaps>
+					<map fromMaterial="*" toMaterial="texStrip" toLibrary="TextureStrip" />
+				</materialMaps>
+			</pass>
+		</pipeline>
+	</pipelines>
+</project>

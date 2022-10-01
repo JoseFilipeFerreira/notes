@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<materialLib name="Geometry With Adjacency">
+
+
+	<shaders>
+		<shader name="geomAdj" 		ps="shaders/dirlightdiffambpix.frag" 
+									gs="shaders/lineAdj.geom"
+									vs="shaders/dirlightdiffambpix.vert" />
+	</shaders>
+
+	<materials>
+		<material name="showContours">
+			<shader name="geomAdj">
+				<values>
+					<valueof uniform="PVM"          	type="RENDERER" context="CURRENT" 
+														component="PROJECTION_VIEW_MODEL" />
+
+					<valueof uniform="M"          		type="RENDERER" context="CURRENT" 
+														component="MODEL" />
+					<valueof uniform="camPos"				type="CAMERA" context="CURRENT"
+														component="POSITION" />
+														
+				</values>
+			</shader>
+		</material>
+	</materials>
+</materialLib>

@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<project name="Texture Model" >
+	<assets>
+		<attributes>
+			<attribute name="eta" type="COLOR" 
+						data="FLOAT" value="1.1" />
+						
+			<attribute name="alpha" type="COLOR" 
+						data="FLOAT" value="0.5" />
+						
+			<attribute name="power" type="COLOR" 
+						data="FLOAT" value="2.0" />
+						
+			<attribute name="bias" type="COLOR" 
+						data="FLOAT" value="0.2" />
+						
+			<attribute name="scale" type="COLOR" 
+						data="FLOAT" value="2.0" />
+		</attributes>
+		<scenes>
+			<scene name="Box" >
+				<SCALE x=500 y=500 z=500 />
+				<file name="models/cube3.obj"/>
+			</scene>
+			<scene name="Sphere" param="UNITIZE SWAP_YZ">
+				<file name="models/Teapot.3ds"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<TYPE value="PERSPECTIVE"/>
+				<FOV value=60/>
+				<NEAR value= 0.1/>
+				<FAR value= 1000/>
+				<POSITION x=0 y=0 z=3 />  
+				<VIEW x=0 y=0 z=-1.0 />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun">
+				<DIRECTION x=-2 y=-2 z=-2 />
+			</light>
+		</lights>
+		
+		<materialLibs>
+			<materialLib filename="textureModel.mlib" />
+		</materialLibs>
+	</assets>
+	
+	<pipelines>
+		<pipeline name="textures" default="true">
+			<pass class="default" name="texture" >
+				<scenes>
+					<scene name="Box" />
+					<scene name="Sphere" />
+				</scenes>
+				<camera name="MainCamera" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+					<map toMaterial="*">
+						<shader fromMaterial="textured" fromLibrary="Texture" />
+						<state name="cullFront" fromLibrary="Texture" />
+					</map>
+				</injectionMaps>
+				<materialMaps>
+					<map fromMaterial="Default" toMaterial="Cubemap" toLibrary="Texture" />
+				</materialMaps>
+			</pass>
+		</pipeline>
+	</pipelines>
+</project>

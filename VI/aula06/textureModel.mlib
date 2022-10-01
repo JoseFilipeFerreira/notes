@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<materialLib name="Texture">
+
+	<textures>
+		<cubeMap name="CMHouse" 
+			filePosX="models/textures/cm_right.jpg"
+			fileNegX="models/textures/cm_left.jpg"
+			filePosY="models/textures/cm_top.jpg"
+			fileNegY="models/textures/cm_bottom.jpg"
+			filePosZ="models/textures/cm_front.jpg"
+			fileNegZ="models/textures/cm_back.jpg"	
+		/>
+		<!--texture name="bla" filename="models/textures/cm_right.jpg" /-->
+	</textures>
+
+	<shaders>
+		<shader name="textured" 		vs = "shaders/texture.vert" 
+										ps = "shaders/texture.frag" />
+		<shader name="cubemap" 			vs = "shaders/cubemap.vert" 
+										ps = "shaders/cubemap.frag" />
+	</shaders>
+	
+	<states>
+		<state name="cullFront">
+			<CULL_TYPE value="FRONT" />
+		</state>
+		<state name="Transparent">
+			<ORDER value="2" />
+			<BLEND value=true />
+			<BLEND_SRC value="SRC_ALPHA" />
+			<BLEND_DST value="ONE_MINUS_SRC_ALPHA" />		
+		</state>
+	</states>
+	
+	<materials>
+		<material name="textured">
+			<shader name="textured">
+				<values>
+					<valueof uniform="m_pvm" 
+							 type="RENDERER" context="CURRENT" 
+							 component="PROJECTION_VIEW_MODEL" />
+					 
+					 
+					<valueof uniform="tex"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=0 />
+				</values>
+			</shader>
+		</material>
+		
+		<material name="Cubemap">
+			<shader name="cubemap">
+				<values>
+					<valueof uniform="PVM"          type="RENDERER" context="CURRENT" 
+														component="PROJECTION_VIEW_MODEL" />
+														
+					<valueof uniform="M"     		type="RENDERER" context="CURRENT" 
+														component="MODEL" />
+																							
+					<valueof uniform="texUnit"		type="TEXTURE_BINDING" context="CURRENT"
+														component="UNIT" id=0 />
+														
+					<valueof uniform="camWorldPos"	type="CAMERA" context="CURRENT"	
+														component="POSITION" />
+				</values>
+			</shader>	
+			<textures>
+				<texture UNIT="0" name="CMHouse" />
+			</textures>
+		</material>
+
+	</materials>
+</materialLib>

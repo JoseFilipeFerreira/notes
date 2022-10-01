@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<materialLib name="TextureStrip">
+
+	<shaders>
+		<shader name="texStripAAdFdx" 		vs = "shaders/texStripAAdFdx.vert" 
+										ps = "shaders/texStripAAdFdx.frag" />
+	</shaders>
+	
+	<materials>
+		<material name="texStripAAdFdx">
+			<shader name="texStripAAdFdx">
+				<values>
+					<valueof uniform="m_pvm" 
+							 type="RENDERER" context="CURRENT" 
+							 component="PROJECTION_VIEW_MODEL" />
+							 
+					<valueof uniform="diffuse" 
+							 type="COLOR" context="CURRENT" 
+							 component="DIFFUSE" />
+							 
+					<valueof uniform="otherColor" 
+							 type="COLOR" context="CURRENT" 
+							 component="otherColor" />
+							 
+					<valueof uniform="div" 
+							 type="COLOR" context="CURRENT" 
+							 component="div" />
+							 
+					<valueof uniform="width" 
+							 type="COLOR" context="CURRENT" 
+							 component="width" />
+					<valueof uniform="factor" 
+							 type="COLOR" context="CURRENT" 
+							 component="factor" />
+				</values>
+			</shader>
+		</material>
+	</materials>
+	
+</materialLib>

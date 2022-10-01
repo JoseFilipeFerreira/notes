@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<materialLib name="TextureStrip">
+
+	<textures>
+		<texture name="color" filename="textures/coloredLine.jpg" mipmap=true />
+	</textures>
+
+	<shaders>
+		<shader name="texStrip" 		vs = "shaders/texStripAAT1.vert" 
+										ps = "shaders/texStripAAT1.frag" />
+	</shaders>
+	
+	<materials>
+		<material name="texStrip">
+			<shader name="texStrip">
+				<values>
+					<valueof uniform="m_pvm" 
+							 type="RENDERER" context="CURRENT" 
+							 component="PROJECTION_VIEW_MODEL" />
+					 
+					<valueof uniform="div" 
+							 type="COLOR" context="CURRENT" 
+							 component="div" />
+							 
+					<valueof uniform="tex"
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=0 />
+				</values>
+			</shader>
+			<textures>
+				<texture name="color" UNIT = 0 />
+			</textures>
+		</material>
+	</materials>
+	
+</materialLib>
