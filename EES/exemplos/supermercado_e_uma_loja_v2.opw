@@ -1,0 +1,59 @@
+[RESOURCES]
+Lugar Estacionamento
+Provador
+Caixa Loja
+Caixa Hiper
+[VARIABLES]
+Ver Produtos Hiper.NumberIn
+Chegada de autocarros.NumberOut
+Comprar Hiper?.NumberOut True
+saída de clientes e autocarros.NumberOut
+Vai Loja?.NumberOut False
+Receitas_Hiper
+Estacionar o carro.NumberOut
+Separar_compras.NumberOut Orig
+criar rifas.NumberOut
+Sair ou Loja.NumberOut False
+Autocarro?.NumberOut True
+Pagamento Loja.NumberIn
+Pagamento Loja.NumberOut
+Ver Produtos Loja.NumberOut
+Ver Produtos Loja.NumberIn
+Entrada de Pessoas.NumberOut
+Escadas.NumberOut
+UBER?.NumberOut True
+Retirar o Carro.NumberIn
+Provador Loja.NumberOut
+UBER?.NumberOut False
+Tem compras Hiper?.NumberOut True
+Provador Loja.NumberIn
+Pagamento Hiper?.NumberIn
+grupos de 4 para UBER.NumberOut
+Tem compras Hiper?.NumberOut False
+Pagamento Hiper?.NumberOut
+Vai Loja?.NumberOut True
+Entrada de Carros.NumberOut
+Autocarro?.NumberOut False
+sair autocarro.NumberOut Dup
+sair autocarro.NumberOut Orig
+Receitas_Loja
+Separar_compras.NumberOut Dup
+Retirar o Carro.NumberOut
+Ver Produtos Hiper.NumberOut
+Provador?.NumberOut True
+Saida de Clientes.NumberOut
+Tem Carro?.NumberOut False
+Tem Carro?.NumberOut True
+Espera UBER.NumberIn
+Espera UBER.NumberOut
+Sair ou Loja.NumberOut True
+Pagamento?.NumberOut False
+Pagamento?.NumberOut True
+Entrada ou Decisão Saída.NumberOut True
+Comprar Hiper?.NumberOut False
+Provador?.NumberOut False
+Escadas.NumberIn
+Entrada ou Decisão Saída.NumberOut False
+Comprou_Hiper.NumberOut False
+Comprou_Hiper.NumberOut True
+Estacionar o carro.NumberIn
