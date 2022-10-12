@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<project name="Geometry Shader - Pass Through" width=512 height=512>
+	<assets>
+	
+		<scenes>
+			<scene name="MainScene" param="UNITIZE">
+				<file name="models/teapot.obj"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=7.5 />
+				<VIEW x=0.0 y=0.0 z=-1.0 />
+				<UP x=0 y=1 z=0 />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun" >
+				<DIRECTION x="1.0" y="-0.5" z="-2" />
+			</light>
+		</lights>
+		
+		<materialLibs>
+			<materialLib filename="geomTest.mlib"/>
+		</materialLibs>
+		
+	</assets>
+	
+	
+	<pipelines>
+	
+		<pipeline name="pass through" >
+		
+			<pass class="default" name="pass through">
+				<scenes>
+					<scene name="MainScene" />
+				</scenes>
+				<camera name="MainCamera" />
+				<viewport name="MainViewport" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+					<map toMaterial="*" >
+						<shader fromMaterial="pass through" fromLibrary="geom test" />
+					</map>
+				</injectionMaps>
+			</pass>
+					
+		</pipeline>
+		
+	</pipelines>
+
+</project>

@@ -1,0 +1,129 @@
+<?xml version="1.0" ?>
+<project name="Stereo with Geoemtry Shader" width=512 height=512>
+	<assets>
+	
+		<scenes>
+			<scene name="MainScene" param="UNITIZE">
+				<file name="models/teapot.obj"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=7.5 />
+				<VIEW x=0.0 y=0.0 z=-1.0 />
+				<UP x=0 y=1 z=0 />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun" >
+				<DIRECTION x="1.0" y="-0.5" z="-2" />
+			</light>
+		</lights>
+		
+		<materialLibs>
+			<materialLib filename="stereo.mlib"/>
+		</materialLibs>
+		
+	</assets>
+	
+	
+	<pipelines>
+	
+	<pipeline name="stereo4" defaultCamera = "MainCamera">
+		
+			<pass class="default" name="renderViews">
+				<scenes>
+					<scene name="MainScene" />
+				</scenes>
+				<camera name="MainCamera" />
+				<viewport name="MainViewport" />
+				<renderTarget name="views4" fromLibrary="stereo" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+					<map toMaterial="DefaultOBJMaterial" >
+						<shader fromMaterial="renderViews" fromLibrary="stereo" />
+					</map>
+				</injectionMaps>
+			</pass>
+			
+			<pass class="quad" name="compose">
+				<viewport name="MainViewport" />
+				<material name="compose4" fromLibrary="stereo" />
+			</pass>
+			
+		</pipeline>
+
+		<pipeline name="stereo" defaultCamera = "MainCamera">
+		
+			<pass class="default" name="renderViews">
+				<scenes>
+					<scene name="MainScene" />
+				</scenes>
+				<camera name="MainCamera" />
+				<viewport name="MainViewport" />
+				<renderTarget name="views" fromLibrary="stereo" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+					<map toMaterial="DefaultOBJMaterial" >
+						<shader fromMaterial="renderViews" fromLibrary="stereo" />
+					</map>
+				</injectionMaps>
+			</pass>
+			
+			<pass class="quad" name="compose">
+				<viewport name="MainViewport" />
+				<material name="compose" fromLibrary="stereo" />
+			</pass>
+			
+		</pipeline>
+		
+
+		<pipeline name="stereo16" defaultCamera = "MainCamera">
+		
+			<pass class="default" name="renderViews">
+				<scenes>
+					<scene name="MainScene" />
+				</scenes>
+				<camera name="MainCamera" />
+				<viewport name="MainViewport" />
+				<renderTarget name="views16" fromLibrary="stereo" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+					<map toMaterial="DefaultOBJMaterial" >
+						<shader fromMaterial="renderViews" fromLibrary="stereo" />
+					</map>	
+				</injectionMaps>
+			</pass>
+			
+			<pass class="quad" name="compose">
+				<viewport name="MainViewport" />
+				<material name="compose16" fromLibrary="stereo" />
+			</pass>
+			
+		</pipeline>
+		
+	</pipelines>
+	
+	<interface>
+		<window label="settings" >
+			<pipelineList label="effect" />
+		</window>
+	</interface>	
+		
+
+</project>

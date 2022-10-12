@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<project name="Texture Coordinates" >
+	<assets>
+		<scenes>
+			<scene name="MySceneT"  param="UNITIZE">
+				<file name="models/sphere.obj"/>
+			</scene>
+			<scene name="MySceneC" param="UNITIZE">
+				<file name="models/cube2.obj"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=3 />
+				<VIEW x=0 y=0 z=-1.0 />
+			</camera>
+		</cameras>
+		
+		
+		<materialLibs>
+			<materialLib filename="textureCoordinates.mlib" />
+		</materialLibs>
+	</assets>
+	
+	<pipelines>
+		<pipeline name="textures" default="true">
+			<pass class="default" name="textureCoordinates">
+				<scenes>
+					<scene name="MySceneC" />
+				</scenes>
+				<camera name="MainCamera" />
+				<materialMaps>
+					<map fromMaterial="*" toMaterial="texCoord" toLibrary="Textures" />
+				</materialMaps>
+			</pass>
+		</pipeline>
+	</pipelines>
+</project>

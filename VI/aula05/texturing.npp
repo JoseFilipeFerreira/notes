@@ -1,0 +1,82 @@
+<NotepadPlus>
+    <Project name="texture Simple">
+        <Folder name="shaders">
+            <File name="shaders\texture.frag" />
+            <File name="shaders\texture.vert" />
+        </Folder>
+        <File name="textureModel.mlib" />
+        <File name="textureModel.xml" />
+    </Project>
+    <Project name="textureCoordinates">
+        <File name="textureCoordinates.mlib" />
+        <File name="textureCoordinates.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texCoord.frag" />
+            <File name="shaders\texCoord.vert" />
+        </Folder>
+    </Project>
+    <Project name="textureGrid">
+        <File name="textureGrid.mlib" />
+        <File name="textureGrid.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texGrid.frag" />
+            <File name="shaders\texGrid.vert" />
+        </Folder>
+    </Project>
+    <Project name="textureStrip">
+        <File name="textureStrip.mlib" />
+        <File name="textureStrip.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texStrip.frag" />
+            <File name="shaders\texStrip.vert" />
+        </Folder>
+    </Project>
+    <Project name="textureStripAA1">
+        <File name="textureStripAA1.mlib" />
+        <File name="textureStripAA1.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texStripAA1.frag" />
+            <File name="shaders\texStripAA1.vert" />
+        </Folder>
+    </Project>
+    <Project name="textureStripAA2">
+        <File name="textureStripAA2.mlib" />
+        <File name="textureStripAA2.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texStripAA2.frag" />
+            <File name="shaders\texStripAA2.vert" />
+        </Folder>
+    </Project>
+    <Project name="textureStripSS">
+        <File name="textureStripAASS.mlib" />
+        <File name="textureStripAASS.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texStripAASS.frag" />
+            <File name="shaders\texStripAASS.vert" />
+        </Folder>
+    </Project>
+    <Project name="textureStripT1">
+        <File name="textureStripAAT1.mlib" />
+        <File name="textureStripAAT1.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texStripAAT1.frag" />
+            <File name="shaders\texStripAAT1.vert" />
+        </Folder>
+    </Project>
+    <Project name="textureStripT2">
+        <File name="textureStripAAT2.mlib" />
+        <File name="textureStripAAT2.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texStripAAT2.frag" />
+            <File name="shaders\texStripAAT2.vert" />
+        </Folder>
+    </Project>
+    <Project name="textureStripDF">
+        <File name="textureStripAAdFdx.mlib" />
+        <File name="textureStripAAdFdx.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texStripAAdFdx.frag" />
+            <File name="shaders\texStripAAdFdx.vert" />
+        </Folder>
+    </Project>
+</NotepadPlus>

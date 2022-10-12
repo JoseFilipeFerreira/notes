@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<project name="Simple" width="512" height="512">
+	<assets>
+		<scenes>
+			<scene name="Al"  param="USE_ADJACENCY UNITIZE SWAP_YZ" >
+				<file name="models/al.obj"/>
+
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<projection TYPE="PERSPECTIVE" FOV=60.0 NEAR=0.1 FAR=100.0 />
+				<POSITION x=0 y=0.0 z=7.5 />
+				<VIEW x=0.0 y=0.0 z=-1.0 />
+				<UP x=0 y=1 z=0 />
+			</camera>
+		</cameras>
+		
+		<materialLibs>
+			<materialLib filename="geomAdj.mlib"/>
+		</materialLibs>
+	</assets>
+	
+	<pipelines>
+		<pipeline name="fixedfunction" default="true">
+			<!--pass class="default" name="pass1" >
+				<scenes>
+					<scene name="Al" />
+				</scenes>
+				<camera name="MainCamera" />
+
+			</pass-->
+			<pass class="default" name="pass2">
+				<DEPTH_CLEAR value=false />
+				<COLOR_CLEAR value=false />
+                <DEPTH_FUNC value="LEQUAL" />
+				<scenes>
+					<scene name="Al" />
+				</scenes>
+				<camera name="MainCamera" />
+				<materialMaps>
+					<map fromMaterial="*" toLibrary="Geometry With Adjacency" toMaterial="showContours" />
+				</materialMaps>
+			</pass>
+		</pipeline>
+	</pipelines>
+</project>

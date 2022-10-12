@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<materialLib name="dynamic cubemap">
+
+	<textures>
+		<cubeMap name="CMHouse" 
+			filePosX="models/textures/cm_right.jpg"
+			fileNegX="models/textures/cm_left.jpg"
+			filePosY="models/textures/cm_top.jpg"
+			fileNegY="models/textures/cm_bottom.jpg"
+			filePosZ="models/textures/cm_front.jpg"
+			fileNegZ="models/textures/cm_back.jpg"	
+		/>
+		<!--texture name="bla" filename="models/textures/cm_right.jpg" /-->
+	</textures>
+
+	<renderTargets>
+	
+		<renderTarget name ="views">
+			<SIZE width=512 height=512 />
+			<CLEAR_VALUES x=0.9 y=0.9 z=0.9 w=1 />
+			<colors>
+				<cubemap name="offscreenrender" internalFormat="RGBA" />
+			</colors>
+			<depth name="viewDepth" internalFormat="DEPTH_COMPONENT32F" />
+		</renderTarget>
+		
+		<renderTarget name ="views2">
+			<SIZE width=512 height=512 />
+			<LAYERS value=6 />
+			<CLEAR_VALUES x=1 y=0 z=1 w=1 />
+			<colors>
+				<color name="offscreenrender2" internalFormat="RGBA" />
+			</colors>
+			<depth name="viewDepth2" internalFormat="DEPTH_COMPONENT32F" />
+		</renderTarget>
+
+		
+		<renderTarget name ="views4">
+			<SIZE width=512 height=512 />
+			<LAYERS value=6 />
+			<SAMPLES value=4 />
+			<CLEAR_VALUES x=1 y=1 z=1 w=1 />
+			<colors>
+				<color name="offscreenrender4" internalFormat="RGBA" />
+			</colors>
+			<depth name="viewDepth4" internalFormat="DEPTH_COMPONENT32F" />
+		</renderTarget>
+		
+		<renderTarget name ="views16">
+			<SIZE width=512 height=512 />
+			<LAYERS value=6 />
+			<SAMPLES value=16 />
+			<colors>
+				<color name="offscreenrender16" internalFormat="RGBA" />
+			</colors>
+			<depth name="viewDepth16" internalFormat="DEPTH_COMPONENT32F" />
+		</renderTarget>
+		
+	</renderTargets>
+
+	<shaders>
+		<shader name="renderViews" 	    ps="shaders/color.frag" 
+										gs="shaders/dynamicCM.geom"
+										vs="shaders/dynamicCM.vert" />
+										
+		<shader name="cubemap" 			ps="shaders/cubemap.frag" 
+										vs="shaders/cubemap.vert" />
+
+		<shader name="color" 			ps="shaders/color.frag" 
+										vs="shaders/color.vert" />
+
+	</shaders>
+	
+	<materials>
+	
+		
+		<material name="renderViews" >
+			<shader name="renderViews" >
+				<values>
+					<valueof uniform="P" 	type="RENDERER" context="CURRENT" 
+												component="PROJECTION"  />	
+												
+					<valueof uniform="M" 	type="RENDERER" context="CURRENT" 
+												component="MODEL"  />	
+												
+					<valueof uniform="spherePos" 	type="SCENE" context="sphere"								component="TRANSLATE" />
+							
+					<valueof uniform="lightDir"	type="LIGHT" context="CURRENT"								component="DIRECTION" id=0/>
+					
+				</values>
+			</shader>
+		</material>
+
+		<material name="cubemap">
+			<shader name="cubemap">
+				<values>
+					<valueof uniform="PVM"  type="RENDERER" context="CURRENT" 
+											component="PROJECTION_VIEW_MODEL" />
+														
+					<valueof uniform="M"    type="RENDERER" context="CURRENT" 
+											component="MODEL" />
+																					
+					<valueof uniform="texUnit"	type="TEXTURE_BINDING" 
+											context="CURRENT"
+											component="UNIT" id=0 />
+														
+					<valueof uniform="camWorldPos"	type="CAMERA" context="CURRENT"	
+											component="POSITION" />
+				</values>
+			</shader>	
+			<textures>
+				<texture UNIT="0" name="offscreenrender" />
+			</textures>
+		</material>
+		
+		<material name="color" >
+			<shader name="color" >
+				<values>
+					<valueof uniform="PVM" 	type="RENDERER" context="CURRENT" 
+												component="PROJECTION_VIEW_MODEL"  />	
+												
+					<valueof uniform="VM" 	type="RENDERER" context="CURRENT" 
+												component="VIEW_MODEL"  />				
+												
+					<valueof uniform="V" 	type="RENDERER" context="CURRENT" 
+												component="VIEW"  />	
+																	
+					<valueof uniform="NormalM" 	type="RENDERER" context="CURRENT" 
+												component="NORMAL"  />	
+												
+					<valueof uniform="lightDir"	type="LIGHT" context="CURRENT"								component="DIRECTION" id=0/>
+					
+				</values>
+			</shader>
+		</material>
+	</materials>
+	
+</materialLib>

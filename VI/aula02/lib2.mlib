@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<materialLib name="Test">
+
+	<shaders>
+		<shader name="fixedColor" 	
+			vs = "shaders/fixedColor.vert" 
+			ps = "shaders/fixedColor.frag" />
+	</shaders>
+
+	<materials>
+		<material name="fixedColor">
+			<shader name="fixedColor">
+				<values>
+					<valueof uniform="m_pvm" 
+							 type="RENDERER" context="CURRENT" 
+							 component="PROJECTION_VIEW_MODEL" />
+				</values>
+			</shader>	
+		</material>
+	</materials>	
+</materialLib>

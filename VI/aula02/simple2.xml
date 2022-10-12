@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<project name="Simple" >
+	<assets>
+		<scenes>
+			<scene name="Bench" param="UNITIZE">
+				<file name="rainbowBench.obj"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<POSITION x=-0.8143 y=1.066161 z=1.525997 />
+				<VIEW x=0.300459 y=-0.560906 z=-0.771433 />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun">
+				<DIRECTION x=2 y=-1 z=-2 />
+			</light>
+		</lights>
+				
+		<materialLibs>
+			<materialLib filename="lib2.mlib" />
+		</materialLibs>
+
+	</assets>
+	
+	<pipelines>
+		<pipeline name="usingCustomShaders" >
+			<pass class="default" name="pass1">
+				<scenes>
+					<scene name="Bench" />
+				</scenes>
+				<camera name="MainCamera" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<materialMaps>
+					<map fromMaterial="*"
+					toLibrary="Test"
+					toMaterial="fixedColor" />
+				</materialMaps>
+			</pass>
+		</pipeline>
+	</pipelines>
+</project>

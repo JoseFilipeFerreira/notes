@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+<materialLib name="stereo">
+
+	<renderTargets>
+	
+		<renderTarget name ="views">
+			<SIZE width=512 height=512 />
+			<LAYERS value=2 />
+			<colors>
+				<color name="offscreenrender" internalFormat="RGBA" />
+			</colors>
+			<depth name="viewDepth" internalFormat="DEPTH_COMPONENT32F" />
+		</renderTarget>
+		
+		<renderTarget name ="views4">
+			<SIZE width=512 height=512 />
+			<LAYERS value=2 />
+			<SAMPLES value=4 />
+			<CLEAR_VALUES x=1 y=1 z=1 w=1 />
+			<colors>
+				<color name="offscreenrender4" internalFormat="RGBA" />
+			</colors>
+			<depth name="viewDepth4" internalFormat="DEPTH_COMPONENT32F" />
+		</renderTarget>
+		
+		<renderTarget name ="views16">
+			<SIZE width=512 height=512 />
+			<LAYERS value=2 />
+			<SAMPLES value=16 />
+			<colors>
+				<color name="offscreenrender16" internalFormat="RGBA" />
+			</colors>
+			<depth name="viewDepth16" internalFormat="DEPTH_COMPONENT32F" />
+		</renderTarget>
+		
+	</renderTargets>
+
+	<shaders>
+		<shader name="renderViews" 	    ps="shaders/pixeldirdifambspec.frag" 
+										gs="shaders/stereo.geom"
+										vs="shaders/pixeldirdifambspec.vert" />
+		<shader name="compose" 			ps="shaders/showStereo.frag" 
+										vs="shaders/showStereo.vert" />
+		<shader name="composeMS"		ps="shaders/showStereoMS.frag" 
+										vs="shaders/showStereo.vert" />
+	</shaders>
+	
+	<materials>
+	
+		
+		<material name="renderViews" >
+			<shader name="renderViews" >
+				<values>
+					<valueof uniform="m_proj" 	type="RENDERER" context="CURRENT" 
+												component="PROJECTION"  />	
+												
+					<valueof uniform="m_model" 	type="RENDERER" context="CURRENT" 
+												component="MODEL"  />	
+												
+					<valueof uniform="camPos" 	type="CAMERA" context="CURRENT"								component="POSITION" />
+							
+					<valueof uniform="camUp" 	type="CAMERA" context="CURRENT"								component="NORMALIZED_UP" />
+							
+					<valueof uniform="camView" 	type="CAMERA" context="CURRENT"								component="VIEW" />
+							
+					<valueof uniform="l_dir"	type="LIGHT" context="CURRENT"								component="DIRECTION" id=0/>
+							
+				</values>
+			</shader>
+		</material>
+	
+		<material name="compose">
+			<shader name="compose">
+				<values>
+					<valueof uniform="texUnit" 	type="TEXTURE_BINDING" context="CURRENT" 
+													component="UNIT" id="0" />	
+							
+				</values>
+			</shader>
+			<textures>
+				<texture name="offscreenrender" UNIT="0" />
+			</textures>	
+		</material>		
+
+		<material name="compose4">
+			<shader name="composeMS">
+				<values>
+					<valueof uniform="texUnit" 	type="TEXTURE_BINDING" context="CURRENT" 
+													component="UNIT" id="0" />	
+							
+					<valueof uniform="vpSize" 	type="VIEWPORT" context="CURRENT"								component="ABSOLUTE_SIZE" />
+							
+				</values>
+			</shader>
+			<textures>
+				<texture name="offscreenrender4" UNIT="0" />
+			</textures>	
+		</material>		
+
+		<material name="compose16">
+			<shader name="composeMS">
+				<values>
+					<valueof uniform="texUnit" 	type="TEXTURE_BINDING" context="CURRENT" 
+													component="UNIT" id="0" />	
+							
+					<valueof uniform="vpSize" 	type="VIEWPORT" context="MainViewport"								component="ABSOLUTE_SIZE" />
+							
+				</values>
+			</shader>
+			<textures>
+				<texture name="offscreenrender16" UNIT="0" />
+			</textures>	
+		</material>		
+
+		</materials>
+	
+</materialLib>

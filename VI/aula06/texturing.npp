@@ -1,0 +1,17 @@
+<NotepadPlus>
+    <Project name="Texture Model">
+        <File name="textureModel.mlib" />
+        <File name="textureModel.xml" />
+        <Folder name="shaders">
+            <File name="shaders\texture.frag" />
+            <File name="shaders\texture.vert" />
+            <File name="shaders\cubemap.frag" />
+            <File name="shaders\cubemap.vert" />
+            <File name="shaders\cubemapTransp.frag" />
+            <File name="shaders\cubemapRefract.frag" />
+            <File name="shaders\cubemapFresnel.frag" />
+            <File name="shaders\cubemapRRF.frag" />
+            <File name="shaders\cubemapChromDisp.frag" />
+        </Folder>
+    </Project>
+</NotepadPlus>

@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+<project name="Dynamic Cube Mapping with Geoemtry Shader" width=512 height=512>
+	<assets>
+	
+		<scenes>
+			<scene name="teapotXNZN" param="UNITIZE">
+				<file name="models/teapot.obj"/>
+				<TRANSLATE x =-2 z = -2 y= 0 />
+			</scene>
+			<scene name="teapotXPZN" param="UNITIZE">
+				<file name="models/teapot.obj"/>
+				<TRANSLATE x = 2 z = -2 y= 0 />
+			</scene>
+			<scene name="teapotXNZP" param="UNITIZE">
+				<file name="models/teapot.obj"/>
+				<TRANSLATE x =-2 z = 2 y= 0 />
+			</scene>
+			<scene name="teapotXPZP" param="UNITIZE">
+				<file name="models/teapot.obj"/>
+				<TRANSLATE x =2 z = 2 y= 0 />
+			</scene>
+			<scene name="sphere" >
+				<geometry name = "sphere" type = "SPHERE" SLICES=20 STACKS=20 material="sphere_mat">
+				</geometry>
+				<TRANSLATE x = 0 z = 0 y = 2 />
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=7.5 />
+				<VIEW x=0.0 y=0.0 z=-1.0 />
+				<NEAR value = 0.1 />
+				<UP x=0 y=1 z=0 />
+			</camera>
+			<camera name="CM_Cam">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=0.0 />
+				<VIEW x=0.0 y=0.0 z=-1.0 />
+				<NEAR value = 0.1 />
+				<FOV value = 90 />
+				<UP x=0 y=1 z=0 />
+			</camera>
+			<camera name="CM_Cam_NX">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=0.0 />
+				<VIEW x=-1.0 y=0.0 z=0.0 />
+				<NEAR value = 0.1 />
+				<FOV value = 90 />
+				<UP x=0 y=-1 z=0 />
+			</camera>
+			<camera name="CM_Cam_PX">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=0.0 />
+				<VIEW x=1.0 y=0.0 z=0.0 />
+				<NEAR value = 0.1 />
+				<FOV value = 90 />
+				<UP x=0 y=-1 z=0 />
+			</camera>
+			<camera name="CM_Cam_NY">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0.0 z=0.0 />
+				<VIEW x=0.0 y=-1.0 z=0.0 />
+				<NEAR value = 0.1 />
+				<FOV value = 90 />
+				<UP x=1 y=0 z=0 />
+			</camera>
+			<camera name="CM_Cam_PY">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=0.0 />
+				<VIEW x=0.0 y=1.0 z=0.0 />
+				<FOV value = 90 />
+				<UP x=1 y=0 z=0 />
+			</camera>
+			<camera name="CM_Cam_NZ">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=0.0 />
+				<NEAR value = 0.1 />
+				<VIEW x=0.0 y=0.0 z=-1.0 />
+				<FOV value = 90 />
+				<UP x=0 y=-1 z=0 />
+			</camera>
+			<camera name="CM_Cam_PZ">
+				<viewport name="MainViewport" />
+				<POSITION x=0 y=0 z=0.0 />
+				<NEAR value = 0.1 />
+				<VIEW x=0.0 y=0.0 z=1.0 />
+				<FOV value = 90 />
+				<UP x=0 y=-1 z=0 />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun" >
+				<DIRECTION x="1.0" y="0.5" z="-2" />
+			</light>
+		</lights>
+		
+		<sensors>
+			<sensor name="tsensor" class="TimeSensor">
+				<enabled value="1" />
+				<secondsToStart value="0" />
+				<cycleInterval value="10" />
+				<loop value="1" />
+			</sensor>
+		</sensors>
+		<interpolators>
+			<interpolator name="spherePos" class="PositionInterpolator">
+				<keyFrames>
+					<keyFrame key=0.0 y = -2/>
+					<keyFrame key=0.5 y=2.0/>
+					<keyFrame key=1.0 y = -2/>
+				</keyFrames>
+			</interpolator>
+		</interpolators>
+
+		<routes>
+			<route name="timer2interpol" sender="tsensor" receiver="spherePos" 
+					eventOut="TIMESENSOR_FRACTION_CHANGED"
+					eventIn="SET_INTERPOLATOR_FRACTION" />
+			<route name="interpol2scene" sender="spherePos" receiver="sphere"
+					eventOut="INTERPOLATOR_POSITION"
+					eventIn="SET_POSITION" />
+					
+		</routes>
+		<materialLibs>
+			<materialLib filename="dynCM.mlib"/>
+		</materialLibs>
+		
+	</assets>
+	
+	
+	<pipelines>
+	
+		<pipeline name="dynamic cubemap" defaultCamera = "MainCamera">
+		
+			<pass class="default" name="renderViews">
+				<scenes instances=4>
+					<scene name="teapotXNZN" />
+				</scenes>
+				<camera name="CM_Cam_PX" />
+				<renderTarget name="views" fromLibrary="dynamic cubemap" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+					<map toMaterial="DefaultOBJMaterial" >
+						<shader fromMaterial="renderViews" fromLibrary="dynamic cubemap" />
+					</map>
+				</injectionMaps>
+			</pass>
+			
+			<pass class="default" name="renderFinal1">
+				<scenes instances=4>
+					<scene name="teapotXNZN" />
+				</scenes>
+				<camera name="MainCamera" />
+				<viewport name="MainViewport" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<injectionMaps>
+					<map toMaterial="DefaultOBJMaterial" >
+						<shader fromMaterial="color" fromLibrary="dynamic cubemap" />
+					</map>
+				</injectionMaps>
+			</pass>
+			
+			<pass class="default" name="renderFinal2">
+				<COLOR_CLEAR value=false />
+				<DEPTH_CLEAR value=false />
+				<scenes>
+					<scene name="sphere" />
+				</scenes>
+				<camera name="MainCamera" />
+				<viewport name="MainViewport" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<materialMaps>
+					<map fromMaterial="sphere_mat" 
+						toMaterial="cubemap" toLibrary="dynamic cubemap" />						
+				</materialMaps>
+			</pass>
+		</pipeline>
+	</pipelines>	
+		
+		
+
+</project>

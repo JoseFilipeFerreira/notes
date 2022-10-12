@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<materialLib name="Textures">
+
+	<shaders>
+		<shader name="texCoord" 			vs = "shaders/texCoord.vert" 
+											ps = "shaders/texCoord.frag" />
+	</shaders>
+	
+	<materials>
+		<material name="texCoord">
+			<shader name="texCoord">
+				<values>
+					<valueof uniform="m_pvm" 
+							 type="RENDERER" context="CURRENT" 
+							 component="PROJECTION_VIEW_MODEL" />
+					 
+				</values>
+			</shader>
+		</material>
+	</materials>
+	
+</materialLib>

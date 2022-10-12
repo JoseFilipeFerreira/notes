@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<materialLib name="Point">
+	<shaders>
+		<shader name="point" 	vs = "shaders/point.vert" 
+								ps = "shaders/point.frag" />
+
+	</shaders>
+	
+	<materials>
+		<material name="point">
+			<shader name="point">
+				<values>
+					<valueof uniform="pvm" 
+							 type="RENDERER" context="CURRENT" 
+							 component="PROJECTION_VIEW_MODEL" />
+							 							 
+					<valueof uniform="view" 
+							 type="RENDERER" context="CURRENT" 
+							 component="VIEW" />
+							 
+					<valueof uniform="model" 
+							 type="RENDERER" context="CURRENT" 
+							 component="VIEW" />
+
+					<valueof uniform="m_normal" 
+							 type="RENDERER" context="CURRENT" 
+							 component="NORMAL" />
+
+							 
+					<valueof uniform="diffuse" 
+							 type="COLOR" context="CURRENT" 
+							 component="DIFFUSE" />
+							 
+					<valueof uniform="l_dir" 
+							 type="LIGHT" context="Sun"
+							 component="DIRECTION" />
+				</values>
+			</shader>
+		</material>
+	</materials>
+</materialLib>
