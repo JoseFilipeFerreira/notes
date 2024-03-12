@@ -49,7 +49,7 @@ echo "
 16, 2.0, Tecnologias e Aplicações
 18, 2.0, Laboratório em Engenharia Informática
 17, 3.0, Projeto de Informática
-0, 9.0, Dissertação
+18, 9.0, Dissertação
 " | awk -F',' \
     '{ mult += $2; sum += $1 * $2 }
      $1 > 0 { mult0 += $2; sum0 += $1 * $2 }
